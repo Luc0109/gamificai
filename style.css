@@ -67,6 +67,11 @@ header img {
     justify-content: space-between;
 }
 
+header button{
+
+    display: none;
+}
+
 .menu a {
     color: #fff;
 
@@ -97,6 +102,39 @@ header img {
 
     font-family: "Anta";
     font-size: 32px;
+}
+
+.conteudo-banner span{
+
+    display: block;
+    overflow: hidden;
+    border-right: 6px solid var(--laranja-gamifica);
+    white-space: nowrap;
+    animation: 
+    digitando 2s steps(40, end),
+    cursor .75s step-end infinite
+    ;
+    
+}
+
+@keyframes digitando{
+    from{
+        width: 0;
+    }
+    to{
+        
+        width: 100%;
+    }
+}
+
+@keyframes cursor{
+    from,
+    to {
+        border-color: transparent;
+    }
+    50%{
+        border-color: var(--laranja-gamifica);
+    }
 }
 
 #sobre {
@@ -298,7 +336,7 @@ text-align: left;
 .campo input{
 
     height: 40px;
-
+    font-family:"Montserrat";
     color: white;
     background-color: #351868;
     border: none;
@@ -322,10 +360,12 @@ text-align: left;
 
 .campo input:focus, .campo-textarea textarea:focus{
     outline: 2px solid var(--laranja-gamifica);
+    font-family:"Montserrat";
 
 }
 
 #contato form label{
+    font-family:"Montserrat";
     margin-bottom: 15px;
     font-size: 17px;
 
@@ -361,3 +401,130 @@ text-align: left;
 #contato form button:hover{
     background-color: #ad4929;
 }
+
+#contato form input::placeholder,
+#contato form textarea::placeholder{
+    color: #b9b9b9;
+}
+
+footer{
+    height: 290px;
+    background-color: var(--roxo-gamifica);
+}
+footer .container-grid{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.redes-sociais{
+
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.redes-sociais p{
+    color: white;
+    font-family: "Anta";
+    font-size: 24px;
+
+}
+
+.icones-redes {
+    width: 240px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.icones-redes a{
+    color: white;
+}
+
+.icones-redes a:hover{
+    color: var(--laranja-gamifica);
+}
+
+@media screen and (max-width: 1300px){
+
+    header{
+        position: relative;
+    }  
+    header button {
+        width: 50px;
+        display: unset;
+        background: none;
+        border: none; 
+    }
+    
+    header svg{
+        fill: white;
+    }
+    nav.menu{
+        flex-direction: column;
+        background-color: #000000f0;
+        height: 500px;
+        width: 350px;
+        padding: 0px;
+        position: absolute;
+        top: 165px;
+        right: 0px;
+
+
+    }
+        .sobre{
+            padding: 100px 15%;
+        }
+        .card{
+            height: 320px;
+            width: 200px;
+        }
+
+        #contato form{
+            width: 75%;
+        }
+
+    }
+
+    @media screen and(max-width:1080px){
+        .container-cards{
+            flex-wrap: wrap;
+        }
+        
+        .card{
+            height: 400px;
+
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 40%;
+        }
+        footer{
+            height: fit-content;
+        }
+
+        footer .container-grid{
+            flex-direction: column;
+            padding: 80px;
+
+        }
+
+        footer img{
+            margin-bottom: 100px;
+        }
+
+        footer p{
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .redes-sociais{
+            align-items: center;
+        }
+        
+    
+    }
