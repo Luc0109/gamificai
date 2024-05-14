@@ -14,7 +14,51 @@ function abrirFecharMenu() {
 }
 
 window.onresize = () => {
-    menu,classList.remove("menu-fechado")
-    icone.style.display = "inline"
+    menuclassList.remove("menu-fechado")
+    iconeX.style.display = "inline"
     iconeBarras.style.display = "none"
 }
+
+let slides = [
+    'primeiro-banner',
+    'segundo-banner',
+    'terceiro-banner'
+]
+
+let slideAtual = 0
+
+let numerSlides = slides.length
+
+let banner = document.querySelector(".banner")
+
+banner.classList.add(slides[slideAtual])
+
+const mostrarProximoSlide = () => {
+    banner.classList.remove(slides[slideAtual])
+
+    if(slideAtual < numerSlides - 1) {
+        slideAtual++
+    }else {
+        slideAtual = 0
+    }
+    banner.classList.add(slides[slideAtual])
+}
+
+const mostraSlideAnterior = () => {
+    banner.classList.remove(slides[slideAtual])
+
+    if(slideAtual > 0){
+
+        slideAtual--
+    }else{
+        slideAtual = numerSlides -1
+    }
+
+
+    banner.classList.add(slides[slideAtual])
+    
+
+}
+
+
+
