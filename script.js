@@ -67,27 +67,7 @@ const selecionarSlide = (insdiceSlide) => {
     banner.classList.add(slides[insdiceSlide])
 }
 
-let listaCases = [
-    {
-        imagem: "https://unsplash.it/600/400?image=760",
-        descricao: "Uma empresa de tecnologialança um desafio de gamificação, onde os funcionarios devem propor e implementar ideias inovadoras.",
-    },
-
-    {
-        imagem: "https://unsplash.it/600/400?image=201",
-        descricao: "Empresa de consultoria cria uma narrativa interativa de gamificação para seu programa de treinamento",
-    },
-
-    {
-        imagem: "https://unsplash.it/600/400?image=549",
-        descricao: "Uma empresa de games implementa uma competição gamificada entre equipes que competem pelo topo do ranking",
-    },
-
-    {
-        imagem: "https://unsplash.it/600/400?image=15",
-        descricao: "Uma empresa de saude promove o bem estar dos funcionarios atraves de um desafio de gamificção e condicionamento fisico",
-    },
-]
+let listaCases = []
 
 const renderizarCases = () => {
     let elementoLista = document.getElementById("lista-cards")
@@ -109,6 +89,47 @@ const renderizarCases = () => {
     elementoLista.innerHTML = template
 
 }
+
+const carregarCases = () => {
+    fetch("http://localhost:3000/cases")
+    .then( resposta => resposta.json()) 
+    .then( (dados) => {
+
+        listaCases = dados
+        renderizarCases()
+    })
+    
+}
+
+const solicitarOrcamento = () => {
+    let valorNome = document.getElementById("campo-nome").value
+    let valorEmail = document.getElementById("campo-email").value
+    let valorDescreva = document.getElementById("campo-descreva").value
+    console.log (valorNome)
+    console.log (valorEmail)
+    console.log (valorDescreva)
+
+
+
+    let dadosForm = {
+        nome: valorNome,
+        email: valorEmail,
+        descricao: valorDescreva
+    }
+
+
+    fetch("http://localhost:3000/solicitacoes", {
+        method: "POST",
+        headers: {
+            "Content-Type": "aplication/json"
+        },
+        body: JSON.stringify(dadosForm)
+    })
+    .then(resposta => console.log(resposta))
+    .catch(erro => console.erro(erro))
+}
+
+
 
 
 
